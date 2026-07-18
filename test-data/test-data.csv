@@ -1,0 +1,12 @@
+username,password,expected
+standard_user,secret_sauce,Success
+standard_user,wrongpass,Invalid Password
+wrong_user,secret_sauce,Invalid Username
+,secret_sauce,Username Required
+standard_user,,Password Required
+standard_user,1234567,Password Too Short
+standard_user,Password123,Success
+standard_user,12345678901234567890,Success
+standard_user,123456789012345678901,Password Too Long
+' OR '1'='1,secret_sauce,Rejected
+user!@#,secret_sauce,Validation Error
