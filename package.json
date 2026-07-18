@@ -1,0 +1,25 @@
+{
+  "name": "qa-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sangeetha493/qa-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Sangeetha493/qa-project/issues"
+  },
+  "homepage": "https://github.com/Sangeetha493/qa-project#readme"
+}
