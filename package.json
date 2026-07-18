@@ -1,0 +1,30 @@
+{
+  "name": "qa-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "report": "npx playwright test --reporter=html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Varsha-tech22/qa-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Varsha-tech22/qa-project/issues"
+  },
+  "homepage": "https://github.com/Varsha-tech22/qa-project#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "playwright": "^1.61.1"
+  },
+  "allowScripts": {
+    "fsevents@2.3.2": true
+  }
+}
