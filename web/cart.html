@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart</title>
+</head>
+<body>
+  <h1>Cart</h1>
+  <div class="cart-count" data-test="cart-count">0</div>
+  <div id="cart-items"></div>
+  <button id="checkout">Checkout</button>
+  <script>
+    const cartItems = document.getElementById('cart-items');
+    const checkoutButton = document.getElementById('checkout');
+    const cartCount = document.querySelector('.cart-count');
+
+    const storage = window.sessionStorage;
+    const cart = storage.getItem('cart') ? JSON.parse(storage.getItem('cart')) : [];
+
+    function updateCartCount() {
+      cartCount.textContent = cart.length.toString();
+      storage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function renderCart() {
+      cartItems.innerHTML = cart.length ? cart.map((item, index) => `
+        <div class="cart-item" data-test="cart-item">
+          <span>${item.name}</span>
+          <button data-index="${index}">Remove</button>
+        </div>
+      `).join('') : '<p>Your cart is empty.</p>';
+    }
+
+    updateCartCount();
+
+    cartItems.addEventListener('click', (event) => {
+      if (event.target.matches('button[data-index]')) {
+        const index = Number(event.target.dataset.index);
+        cart.splice(index, 1);
+        updateCartCount();
+        renderCart();
+      }
+    });
+
+    checkoutButton.addEventListener('click', () => {
+      window.location.href = '/checkout';
+    });
+
+    renderCart();
+  </script>
+</body>
+</html>

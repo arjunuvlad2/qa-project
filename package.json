@@ -1,0 +1,13 @@
+{
+  "name": "qa-project",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "typescript": "^5.5.4"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "start": "node server.js"
+  }
+}
