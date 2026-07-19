@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products</title>
+  <style>
+    .product-card { border: 1px solid #ccc; padding: 16px; margin: 8px; }
+    .cart-count { position: fixed; top: 16px; right: 16px; }
+  </style>
+</head>
+<body>
+  <h1>Products</h1>
+  <div class="cart-count" data-test="cart-count">0</div>
+  <div id="products"></div>
+  <script>
+    const cartCount = document.querySelector('.cart-count');
+    const products = document.getElementById('products');
+    const storage = window.sessionStorage;
+    const cart = storage.getItem('cart') ? JSON.parse(storage.getItem('cart')) : [];
+
+    const productData = [
+      { id: 1, name: 'Product 1' },
+      { id: 2, name: 'Product 2' },
+    ];
+
+    function updateCart() {
+      cartCount.textContent = cart.length;
+      storage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function renderProducts() {
+      products.innerHTML = productData.map((product) => `
+        <div class="product-card" data-test="product-card">
+          <h2>${product.name}</h2>
+          <button type="button">Add to cart</button>
+        </div>
+      `).join('');
+
+      document.querySelectorAll('.product-card button').forEach((button, index) => {
+        button.addEventListener('click', () => {
+          cart.push(productData[index]);
+          updateCart();
+        });
+      });
+    }
+
+    updateCart();
+    renderProducts();
+  </script>
+</body>
+</html>
